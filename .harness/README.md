@@ -17,7 +17,7 @@ This is a fork of Apache Kafka project. This project was used to demo the new ca
 
 4. If you are an existing Harness CI user, create a new pipeline to use the cloud option for infrastructure and setup the PR trigger.
 
-5. Enable Test Intelligence:
+5. Enable Test Intelligence:  
 
 * Edit the pipeline yaml in the yaml editor to add this new step:
 ```
