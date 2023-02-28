@@ -131,6 +131,19 @@ public class CommonClientConfigsTest {
     }
 
     @Test
+    public void testInvalidSaslMechanism2() {
+        Map<String, Object> configs = new HashMap<>();
+        configs.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, SecurityProtocol.SASL_PLAINTEXT.name);
+        configs.put(SaslConfigs.SASL_MECHANISM, null);
+        ConfigException ce = assertThrows(ConfigException.class, () -> new TestConfig(configs));
+        assertTrue(ce.getMessage().contains(SaslConfigs.SASL_MECHANISM));
+
+        configs.put(SaslConfigs.SASL_MECHANISM, "");
+        ce = assertThrows(ConfigException.class, () -> new TestConfig(configs));
+        assertTrue(ce.getMessage().contains(SaslConfigs.SASL_MECHANISM));
+    }
+    
+    @Test
     @SuppressWarnings("deprecation")
     public void testMetricsReporters() {
         TestConfig config = new TestConfig(Collections.emptyMap());
