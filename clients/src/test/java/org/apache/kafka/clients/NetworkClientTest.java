@@ -123,7 +123,14 @@ public class NetworkClientTest {
                 reconnectBackoffMsTest, reconnectBackoffMaxMs, 64 * 1024, 64 * 1024,
                 defaultRequestTimeoutMs, connectionSetupTimeoutMsTest, connectionSetupTimeoutMaxMsTest, time, true, new ApiVersions(), new LogContext());
     }
-
+    
+    private NetworkClient createNetworkClientWithMultipleNodes2(long reconnectBackoffMaxMs, long connectionSetupTimeoutMsTest, int nodeNumber) {
+        List<Node> nodes = TestUtils.clusterWith(nodeNumber).nodes();
+        TestMetadataUpdater metadataUpdater = new TestMetadataUpdater(nodes);
+        return new NetworkClient(selector, metadataUpdater, "mock", Integer.MAX_VALUE,
+                reconnectBackoffMsTest, reconnectBackoffMaxMs, 64 * 1024, 64 * 1024,
+                defaultRequestTimeoutMs, connectionSetupTimeoutMsTest, connectionSetupTimeoutMaxMsTest, time, true, new ApiVersions(), new LogContext());
+    }
     private NetworkClient createNetworkClientWithStaticNodes() {
         return new NetworkClient(selector, metadataUpdater,
                 "mock-static", Integer.MAX_VALUE, 0, 0, 64 * 1024, 64 * 1024, defaultRequestTimeoutMs,
