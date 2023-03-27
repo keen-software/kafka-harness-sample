@@ -92,6 +92,8 @@ public class NetworkClientTest {
 
     private static ArrayList<InetAddress> initialAddresses;
     private static ArrayList<InetAddress> newAddresses;
+    
+    
 
     static {
         try {
