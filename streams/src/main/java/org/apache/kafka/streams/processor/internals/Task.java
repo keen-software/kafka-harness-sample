@@ -101,7 +101,7 @@ public interface Task {
 
     // idempotent life-cycle methods
 
-    /**
+    /**  
      * @throws LockException    could happen when multi-threads within the single instance, could retry
      * @throws StreamsException fatal error, should close the thread
      */
